@@ -4,6 +4,7 @@
 Script Purpose:
 	This script checks to see if the object exists in the database, if it does it drops the table
 	and recreates it with the column names and data types specified below.
+Run this script to re-define the DDL structure of "bronze" tables.
 */
 
 If Object_ID ('bronze.crm_cust_info','U') Is Not Null
