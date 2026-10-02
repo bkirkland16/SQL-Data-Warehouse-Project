@@ -1,5 +1,5 @@
 /*
--- Silver Layer Data Load Stored Procedure
+-- crm_cust_info Silver Layer Data Load Stored Procedure
 
 Script Purpose:
 	This script transforms the data from bronze.crm_cust_info trimming spaces from cst_firstname and cst_lastname, and
