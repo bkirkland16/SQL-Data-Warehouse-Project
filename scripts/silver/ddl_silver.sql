@@ -24,12 +24,13 @@ If Object_ID ('silver.crm_prd_info','U') Is Not Null
 	Drop Table silver.crm_prd_info
 Create Table silver.crm_prd_info (
 	prd_id Int,
+	cat_id Nvarchar (50),
 	prd_key Nvarchar (50),
 	prd_nm Nvarchar (50),
 	prd_cost Int,
 	prd_line Nvarchar (50),
-	prd_start_dt Datetime,
-	prd_end_dt Datetime,
+	prd_start_dt Date,
+	prd_end_dt Date,
 	dwh_create_date Datetime2 Default GetDate()
 );
 
