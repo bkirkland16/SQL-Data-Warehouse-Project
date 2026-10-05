@@ -10,12 +10,12 @@ Script Purpose:
 
 Create or Alter Procedure bronze.load_bronze As
 Begin
-Begin Transaction;
 	Declare @start_time Datetime, @end_time Datetime, @batch_start_time Datetime, @batch_end_time Datetime;
 	Set Xact_Abort On;
-	Begin Try
+Begin Try
+Set @batch_start_time = GetDate();
+Begin Transaction;
 
-		Set @batch_start_time = GetDate();
 		Print '====================================';
 		Print 'Loading Bronze Layer';
 		Print '====================================';
@@ -114,24 +114,26 @@ Begin Transaction;
 			Fieldterminator = ',',
 			Tablock
 		);
-			Set @batch_end_time = GetDate();
-		Print '>> Load Duration: '+Cast(DateDiff(second, @batch_start_time, @Batch_end_time) As Nvarchar) + ' seconds';
+			Set @end_time = GetDate();
+		Print '>> Load Duration: '+Cast(DateDiff(second, @start_time, @end_time) As Nvarchar) + ' seconds';
 		Print '------------------------------------';
 
 Commit Transaction;
+		Set @batch_end_time = GetDate();
 		Print '------------------------------------';
 		Print 'Loading Bronze Layer is Completed';
-		Print '>> Total Load Duration: '+Cast(DateDiff(second, @start_time, @end_time) As Nvarchar) + ' seconds';
+		Print '>> Total Load Duration: '+Cast(DateDiff(second, @batch_start_time, @batch_end_time) As Nvarchar) + ' seconds';
 		Print '------------------------------------';
 	End Try
 	Begin Catch
 		If @@TRANCOUNT > 0
 			Rollback Transaction;
 		Print '====================================';
-		Print 'Error Occured During Loading Bronze Layer';
+		Print 'Error Occurred During Loading Bronze Layer';
 		Print 'Error Message' + Error_Message ();
 		Print 'Error Message' + Cast (Error_Number () As Nvarchar);
 		Print 'Error Message' + Cast (Error_State () As Nvarchar);
 		Print '====================================';
+	Throw;
 	End Catch
 End
