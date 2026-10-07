@@ -44,3 +44,14 @@ The Gold Layer is the business-level data representation, structured to support 
 | `subcategory` | NVARCHAR(50) | More detailed classification of the product within its category. |
 | `maintenance_required` | NVARCHAR(50) | Indicates whether the product requires maintenance (e.g., `Yes`, `No`). |
 | `cost` | INT | Cost or base price of the product in whole currency units. |
+
+---
+
+## Data Model Relationships
+
+The Gold Layer follows a **star schema**, with `gold.fact_sales` at the center and the customer and product dimensions providing descriptive attributes.
+
+- `gold.fact_sales.customer_key` → `gold.dim_customers.customer_key`
+- `gold.fact_sales.product_key` → `gold.dim_products.product_key`
+
+This structure allows sales metrics to be analyzed across customer and product dimensions.
