@@ -68,7 +68,7 @@ This document outlines the naming conventions used for schemas, tables, views, c
 
 - All surrogate keys in dimension tables must use the suffix `_key`.
 - **Naming Pattern:** `<entity>_key`
-  - `<entity>`: Refers to the entity the key belongs to.
+  - `<table_name>`: Refers to the entity the key belongs to.
   - `_key`: Suffix indicating that the column is a surrogate key.
   - **Example:** `customer_key` → Surrogate key in the `dim_customers` table.
   - **Example:** `product_key` → Surrogate key in the `dim_products` table.
@@ -91,4 +91,3 @@ This document outlines the naming conventions used for schemas, tables, views, c
   - **Examples:**
     - `load_bronze` → Stored procedure for loading data into the Bronze layer.
     - `load_silver` → Stored procedure for loading data into the Silver layer.
-    - `load_gold` → Stored procedure for loading data into the Gold layer.
