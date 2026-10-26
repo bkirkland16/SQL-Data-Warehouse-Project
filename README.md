@@ -25,8 +25,8 @@ Develop a data warehouse using SQL Server to consolidate sales data, enabling an
 ### BI: Analytics & Reporting (Data Analytics)
 
 ### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
+Develop Tableau based analytics to deliver detailed insights into:
+- **Financial Performance**
 - **Product Performance**
 - **Sales Trends**
 
